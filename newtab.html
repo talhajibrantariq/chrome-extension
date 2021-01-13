@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Notes</title>
+    <meta charset="utf-8">
+    <style>
+        html,
+        body {
+            height: 100%;
+            min-width: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 100%;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 900;
+        }
+
+        body {
+            background: #f7fafc;
+            color: #4a5568;
+        }
+
+        body.dark {
+            color: #f7fafc;
+            background: #4a5568;
+        }
+
+        div.main {
+            display: flex;
+            height: 100%;
+        }
+
+        aside.sidebar {
+            width: 300px;
+            background: #edf2f7;
+            height: 100%;
+            padding: 25px;
+        }
+
+        .dark aside.sidebar {
+            background: #718096;
+        }
+
+        section.holder {
+            width: -webkit-fill-available;
+            height: 100%;
+            padding: 25px;
+        }
+
+        div.icon {
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
+            font-size: 28px;
+        }
+
+        .holder div.icon {
+            cursor: pointer;
+        }
+
+        [contenteditable]:focus {
+            outline: 0px solid transparent;
+        }
+
+        [placeholder]:empty:before {
+            content: attr(placeholder);
+            color: blue;
+            opacity: 0.5;
+            cursor: text;
+        }
+
+        [placeholder]:empty:focus:before {
+            content: "";
+        }
+    </style>
+	<script src="jquery.js"></script>
+    <!-- firebase config -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+	
+    <script src='./firebase.js'></script>
+	
+</head>
+
+<body>
+    <div class="main">
+        <aside class="sidebar">
+            <div class="icon">🖊</div>
+            <h1>Notes</h1>
+            <div class="newNotes">➕ New Notes</div>
+            <h3>My notes</h3>
+            <div id="notesList" class="pages-holder"></div>
+        </aside>
+        <section class="holder">
+            <div class="icon">📔</div>
+            <div class="action">
+                <button data-id="0" id="deleteBtn" 
+                    style="display: none; background-color: #f44336; font-size: 16px; color: white; float: right;margin-left: 10px;">Delete</button>
+                <button id="saveNoteBtn" style="background-color: #66DC64; font-size: 16px; color: white; float: right;">Save</button>
+            </div>
+            <h1 id='noteTitle' contenteditable="true" placeholder="Untitled"></h1>
+            <div id='noteBody' class="post-body" contenteditable="true" placeholder="Write your notes here..."></div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
